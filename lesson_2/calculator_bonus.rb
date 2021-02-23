@@ -19,18 +19,15 @@ end
 
 def operation_to_message(operation)
   word = case operation
-           when '1'
-             'Adding'
-           when '2'
-             'Subtracting'
-           when '3'
-             'Multiplying'
-           when '4'
-             'Dividing'
+         when '1'
+           'Adding'
+         when '2'
+           'Subtracting'
+         when '3'
+           'Multiplying'
+         when '4'
+           'Dividing'
          end
-
-  x = "A random line of code"
-
   word
 end
 
@@ -38,9 +35,9 @@ prompt(MESSAGES['welcome'])
 
 name = ''
 loop do
-  name = Kernel.gets().chomp()
+  name = gets.chomp
 
-  if name.empty?()
+  if name.empty?
     prompt(MESSAGES['valid_name'])
   else
     break
@@ -53,7 +50,7 @@ loop do # Main Loop
   number1 = ''
   loop do
     prompt(MESSAGES['first_number?'])
-    number1 = Kernel.gets().chomp()
+    number1 = gets.chomp
 
     if number?(number1)
       break
@@ -65,7 +62,7 @@ loop do # Main Loop
   number2 = ''
   loop do
     prompt(MESSAGES['second_number?'])
-    number2 = Kernel.gets().chomp()
+    number2 = gets.chomp
 
     if number?(number2)
       break
@@ -78,7 +75,7 @@ loop do # Main Loop
 
   operator = ''
   loop do
-    operator = Kernel.gets().chomp()
+    operator = gets.chomp
 
     if %w(1 2 3 4).include?(operator)
       break
@@ -91,20 +88,20 @@ loop do # Main Loop
 
   result = case operator
            when '1'
-             number1.to_i() + number2.to_i()
+             number1.to_i + number2.to_i
            when '2'
-             number1.to_i() - number2.to_i()
+             number1.to_i - number2.to_i
            when '3'
-             number1.to_i() * number2.to_i()
+             number1.to_i * number2.to_i
            when '4'
-             number1.to_f() / number2.to_f()
+             number1.to_f / number2.to_f
            end
 
   prompt("The result is #{result}")
 
   prompt(MESSAGES['calculate_again?'])
-  answer = Kernel.gets().chomp()
-  break unless answer.downcase().start_with?('y')
+  answer = Kernel.gets.chomp
+  break unless answer.downcase.start_with?('y')
 end
 
 prompt(MESSAGES['farewell'])
