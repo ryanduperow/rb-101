@@ -1,8 +1,5 @@
 require 'yaml'
-
 MESSAGES = YAML.load_file('calculator_messages.yml')
-
-# Define methods
 
 def prompt(message)
   puts "=> #{message}"
@@ -37,8 +34,6 @@ def operation_to_message(operation)
   word
 end
 
-# Start program
-
 prompt(MESSAGES['welcome'])
 
 name = ''
@@ -52,7 +47,7 @@ loop do
   end
 end
 
-prompt(MESSAGES['given_name'])
+prompt("Hi #{name}!")
 
 loop do # Main Loop
   number1 = ''
@@ -105,7 +100,7 @@ loop do # Main Loop
              number1.to_f() / number2.to_f()
            end
 
-  prompt(MESSAGES['result_prompt'])
+  prompt("The result is #{result}")
 
   prompt(MESSAGES['calculate_again?'])
   answer = Kernel.gets().chomp()
